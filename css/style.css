@@ -101,6 +101,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: #1e2628;
   box-shadow: 0 2px 16px rgba(0,0,0,0.18);
   transition: background var(--t-med), box-shadow var(--t-med);
+  animation: slideDown 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* Transparent ONLY on desktop — mobile always stays solid dark */
@@ -1228,12 +1229,32 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .about-content      { padding: 48px 24px; }
 }
 
+/* ── Keyframe definitions ───────────────────────────────────── */
+
+@keyframes slideDown {
+  from { transform: translateY(-60px); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Hero load animations ───────────────────────────────────── */
+
+.animate-hero {
+  opacity: 0;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--hero-delay, 0s);
+}
+
 /* ── Scroll-triggered animations ───────────────────────────── */
 
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(40px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--stagger-delay, 0s);
 }
 
@@ -1244,10 +1265,15 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 /* Respect OS reduced-motion preference — show everything immediately */
 @media (prefers-reduced-motion: reduce) {
+  .animate-hero,
   .animate-on-scroll {
     opacity: 1;
     transform: none;
     transition: none;
+    animation: none;
+  }
+  .site-header {
+    animation: none;
   }
 }
 
