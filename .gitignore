@@ -1,0 +1,10 @@
+.DS_Store
+IMG_*.jpg
+IMG_*.JPG
+IMG_*.jpeg
+IMG_*.PNG
+images/brand/bw-logo-full-res.png
+images/brand/justin-taylor-j.t.-bio.jpg
+convert.py
+page inspiration images/
+_reference/
