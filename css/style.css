@@ -130,6 +130,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .nav-logo img {
@@ -138,6 +139,16 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   transition: opacity var(--t-fast);
 }
 .nav-logo:hover img { opacity: 0.85; }
+
+.nav-brand-name {
+  display: none; /* shown on mobile only */
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  white-space: nowrap;
+}
 
 /* ── Desktop Nav Links ───────────────────────────────────────── */
 
@@ -176,34 +187,38 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav-item.open > .nav-link .chevron { transform: rotate(180deg); }
 
-/* ── Phone CTA (desktop) ─────────────────────────────────────── */
+/* ── Nav CTA Button ──────────────────────────────────────────── */
 
-.nav-phone {
+.nav-cta {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  line-height: 1.2;
-  padding: 6px 0;
+  align-items: center;
   flex-shrink: 0;
+  background: var(--amber);
+  border-radius: 4px;
+  padding: 8px 18px;
+  line-height: 1.25;
+  transition: background var(--t-fast);
 }
 
-.nav-phone-label {
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--blue-light);
-}
+.nav-cta:hover { background: var(--amber-dark); }
 
-.nav-phone-number {
-  font-size: 0.88rem;
+.nav-cta-label {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
   font-weight: 600;
-  color: var(--white);
-  letter-spacing: 0.04em;
-  transition: color var(--t-fast);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.nav-phone:hover .nav-phone-number { color: var(--amber); }
+.nav-cta-number {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.03em;
+}
 
 /* ── Hamburger ──────────────────────────────────────────────── */
 
@@ -1129,14 +1144,23 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ── Responsive ─────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .nav-links,
-  .nav-phone { display: none; }
+  .nav-links { display: none; }
+
+  /* Compact CTA on mobile: hide label, show number only as small button */
+  .nav-cta {
+    padding: 7px 12px;
+  }
+  .nav-cta-label { display: none; }
+  .nav-cta-number { font-size: 0.78rem; }
+
+  /* Show business name next to logo on mobile */
+  .nav-brand-name { display: block; }
 
   .hamburger { display: flex; }
 
   .mobile-menu { display: block; }
 
-  .nav-wrapper { padding: 0 24px; }
+  .nav-wrapper { padding: 0 16px; gap: 10px; }
 
   .features      { padding: 64px 24px; }
   .categories    { padding: 64px 24px; }
