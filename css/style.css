@@ -1177,10 +1177,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .steps-grid         { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
   .steps-grid::before { display: none; }
 
-  .about-inner      { grid-template-columns: 1fr; grid-template-areas: none; grid-template-rows: none; }
-  .about-eyebrow    { padding: 48px 40px 0; }
-  .about-photo      { min-height: 360px; }
-  .about-content    { padding: 40px 40px 56px; }
+  .about-inner      { grid-template-columns: 1fr; grid-template-areas: unset; grid-template-rows: unset; }
+  .about-eyebrow    { grid-area: auto; padding: 48px 40px 0; }
+  .about-photo      { grid-area: auto; min-height: 360px; }
+  .about-content    { grid-area: auto; padding: 40px 40px 56px; }
 
   .contact          { padding: 64px 24px; }
 
