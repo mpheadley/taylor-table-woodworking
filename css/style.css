@@ -756,9 +756,21 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .about-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "eyebrow photo"
+    "content photo";
   max-width: 1400px;
   margin: 0 auto;
 }
+
+.about-eyebrow {
+  grid-area: eyebrow;
+  padding: var(--section-pad) 64px 0;
+}
+
+.about-photo { grid-area: photo; }
+.about-content { grid-area: content; }
 
 .about-photo {
   overflow: hidden;
@@ -1165,9 +1177,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .steps-grid         { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
   .steps-grid::before { display: none; }
 
-  .about-inner      { grid-template-columns: 1fr; }
+  .about-inner      { grid-template-columns: 1fr; grid-template-areas: none; grid-template-rows: none; }
+  .about-eyebrow    { padding: 48px 40px 0; }
   .about-photo      { min-height: 360px; }
-  .about-content    { padding: 56px 40px; }
+  .about-content    { padding: 40px 40px 56px; }
 
   .contact          { padding: 64px 24px; }
 
