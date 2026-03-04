@@ -175,7 +175,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 
 .nav-link:hover,
-.nav-item.active > .nav-link {
+.nav-item.active > .nav-link,
+.nav-link.active {
   color: var(--blue-light);
 }
 
@@ -1225,6 +1226,29 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .testimonials-grid  { grid-template-columns: 1fr; }
   .steps-grid         { grid-template-columns: 1fr; }
   .about-content      { padding: 48px 24px; }
+}
+
+/* ── Scroll-triggered animations ───────────────────────────── */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition-delay: var(--stagger-delay, 0s);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect OS reduced-motion preference — show everything immediately */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ── Mobile Sticky CTA ──────────────────────────────────────── */
