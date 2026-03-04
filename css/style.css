@@ -145,7 +145,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-family: var(--font-serif);
   font-size: 0.95rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #ffffff !important;
   line-height: 1.2;
   white-space: nowrap;
 }
